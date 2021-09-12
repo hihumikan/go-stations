@@ -20,7 +20,7 @@ func main() {
 func realMain() error {
 	// config values
 	const (
-		defaultPort   = ":8888"
+		defaultPort   = ":8080"
 		defaultDBPath = ".sqlite3/todo.db"
 	)
 
@@ -52,12 +52,9 @@ func realMain() error {
 	mux := http.NewServeMux()
 
 	// TODO: ここから実装を行う
-	mux.Handle("/hello", http.HandlerFunc(hello))
-	log.Fatal(http.ListenAndServe(":8888", mux))
+
+	fmt.Println("server start:")
+	log.Fatal(http.ListenAndServe(":8080", mux))
 
 	return nil
-}
-func hello(w http.ResponseWriter, _ *http.Request) {
-	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "Hello World")
 }
